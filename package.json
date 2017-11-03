@@ -1,0 +1,41 @@
+{
+  "name": "cuny-books",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "test": "mocha --recursive tests/"
+  },
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "~1.15.1",
+    "bootstrap": "^3.3.7",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^1.3.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "express": "~4.13.4",
+    "express-handlebars": "^3.0.0",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "handlebars": "^4.0.5",
+    "jquery": "^3.1.0",
+    "mocha": "^3.0.2",
+    "mongoose": "^4.6.1",
+    "morgan": "~1.7.0",
+    "nodemailer": "^2.6.4",
+    "nodemon": "^1.10.2",
+    "passport": "^0.3.2",
+    "passport-http": "*",
+    "passport-local": "*",
+    "passport-local-mongoose": "^4.0.0",
+    "passport-mongoose": "0.0.1",
+    "sendgrid": "^4.7.1",
+    "serve-favicon": "~2.3.0",
+    "stripe": "^4.12.0",
+    "xoauth2": "^1.2.0"
+  }
+}

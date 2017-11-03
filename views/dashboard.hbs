@@ -1,0 +1,129 @@
+<div class='container'>
+    {{!-- left side of the page --}}
+    <div class='col-sm-9'>
+        <div class='min-search-bar'>
+            <form class="form-horizontal" role="form" action="/book/searchAll" method="POST"> 
+                <input type="text" name="title" placeholder="Title Or ISBN" class="form-control">
+                <button type="submit" class="btn btn-primary btn-block">Search</button>
+            </form> <!-- /form -->
+        </div>
+        
+        <div class='content-block block-1'>
+            <div class='subtitle'><strong>Relevant Books</strong></div>
+            <div class="row">
+              {{#if major}}
+                {{showBooks relBooks}}
+              {{else}}
+                <div style='text-align:center'class="">
+                  <span class='glyphicon glyphicon-eye-close'></span>
+                  You need to select a major inorder to show books that you might need
+                </div>
+              {{/if}}
+            </div>
+        </div>
+        <div class='content-block block-2'>
+          <div class='subtitle'><strong>All Books</strong></div>
+          <div class="">
+            {{showBooks books}}
+          </div>
+        </div>
+    </div>
+    {{!-- right side of the page --}}
+    <div class='col-sm-3'>
+        <div class='info-block user-block'>
+            {{#if name}}
+                <div>Student Name {{name}}</div>
+            {{/if}}
+            {{#if college}}
+                <div>CUNY Institute: {{college}}</div>
+            {{/if}}
+            {{#if major}}
+                <div>Major:{{major}}</div>
+            {{/if}}
+            {{#if minor}}
+
+            {{/if}}
+        </div>
+        <div class='info-block listing-block'>
+            <div>My Listings</div>
+            <hr>
+            {{showListings listings}}
+            <a class='listbook-btn btn btn-success' href='/books/{{user.fullName}}/books'>My Books</a><br><br>
+            <a class='listbook-btn btn btn-success' href='/books/newBookForm'>List a book</a>
+        </div>
+    </div>
+</div>
+
+<!-- OfferModal -->
+<div class="modal fade" id="offerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">What whould you like to offer for this book?</h4>
+        </div>
+        <div class="modal-body">
+          <label for="offerBook">Avaliable Books:</label>
+          <select class="form-control" form="offerForm" id="offerBook">
+            {{#each listings}}
+              <option value="{{this._id}}">{{this.title}}</option>
+            {{/each}}
+          </select>
+          <label for="offer">Message: </label>
+          <textarea id="offer" form="offerForm" name="offerMsg" style="width:100%;"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <form style="display:inline-block;" id="offerForm" method="post" action="/book/offers/new">
+            <input type="submit" class="btn btn-primary" value="Sent Offer">
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Show Offer Modal -->
+<div class="modal fade" id="showOfferModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Offers for this book</h4>
+        </div>
+        <div id="showOffer-body" class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+{{!-- <!-- BookModal -->
+<div class="modal fade" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Books to offer</h4>
+        </div>
+        <div class="modal-body">
+          {{offerBooks listings}}
+        </div>
+        <div class="modal-footer">
+          <button id="offerBook-btn" type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div> --}}
+
+<script src="/javascripts/offers.js"></script>

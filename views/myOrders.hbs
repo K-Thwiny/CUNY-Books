@@ -1,0 +1,18 @@
+<div class="container">
+    {{#if status}}
+        <div class="alert alert-success">
+          <strong>{{status.title}}</strong> {{status.msg}}
+        </div>
+    {{/if}} 
+    <h3> Hi {{user.fullName}}</h3>
+    <h4> Below are list or your orders:</h4><br>
+    <div>
+        {{# each orders }} 
+            {{# each this.book}}
+            <div>Book Orderd: <a href="/books/{{this}}"> {{this}}</a></div><br>
+            {{/each}}
+            <div>Date Orderd: {{this.date}}</div><br>
+            <div>Amount: $ {{this.amount}}</div> <br><hr>
+        {{/each}}
+    </div>      
+</div>
